@@ -1,5 +1,5 @@
 class Categorias {
-
+  
   constructor(){
     this._categorias = []
   }

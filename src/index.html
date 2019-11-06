@@ -1,76 +1,142 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gerenciador de Tarefas</title>
-    <link rel="stylesheet" href="assets/css/estilo.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarefas</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Importações do Bootstrap -->
+  <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+  <style>
+    .task-background{
+      background-color: #F4F4F4;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .font-text{
+      font-size: 12px;
+    }
+    .link-category{
+      font-size: 14px;
+      color: #4F4F4F;
+    }
+    .link-category:hover{
+      text-decoration: none;
+    }
+    .link-task{
+      font-size: 16px;
+      color: #4F4F4F;
+    }
+    .link-task:hover{
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Painel de Tarefas</h1>
-    </header>
-    <main>
-        <div class="main__outros">
-            <!-- DIV para calendário, categoria e botão lixeira-->
-            <div class="calendario">
-                <p>Novembro</p>
-            </div>
-            <div class="categorias">
-                <p>Categorias</p>
-            </div>
-            <div class="lixeira">
-                <p>Lixeira</p>
-            </div>
+  
+  <header class="container-fluid" style="background-color: #2F80ED">
+    <div class="d-flex justify-content-between pt-2 pb-2">
+      
+      <div class="text-white align-self-center" style="font-size: 24px">
+        Tarefa
+      </div>
+      
+      <div class="align-self-center">
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control mr-2" placeholder="Buscar" style="background-color: #4E90E9; color: #FFF">
+          </div>
+          <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
+            <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
+        </form>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container-fluid d-flex">
+    <nav>
+      <div class="mt-3 d-flex justify-content-between">
+        <span>Categorias:</span>
+        <span>
+          <a href="#"><img src="assets/images/add-black.svg" alt="Nova categoria"></a>
+        </span>
+      </div>
+      <ul class="list-unstyled mt-3" id="lista-categorias">
+        
+      </ul>
+    </nav>
+    
+    <section class="flex-fill" id="grid">
+
+      <!-- Mensagem -->
+      <div class="d-none" id="mensagem"></div>
+    
+    </section>
+
+    <div class="modal" id="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Inserir nova tarefa</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>grid
+          </div>
+          <div class="modal-body">
+            <form class="form">
+              <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" class="form-control" value="Fazer algo">
+              </div>
+              <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" class="form-control" value="2019-10-10">
+              </div>
+              <div class="form-group">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" class="form-control">
+                  <option value="1">Escola</option>
+                  <option value="2">Trabalho de conclusão</option>
+                  <option value="3">Trabalho</option>
+                  <option value="4">Escola</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary" id="btn-salvar" onclick="tarefaController.inserir()">Salvar</button>
+          </div>
         </div>
-        <div class="main__tarefas">
-            <!-- DIV para as tarefas mostradas-->
-            <div class="main__tarefas-titulo">
-                <div>
-                    <!-- Pesquisa-->
-                    <img src="" alt="">
-                    <input>
-                </div>
-                <div>
-                    <h1>Tarefas</h1>
-                </div>
-                <div class="main__tarefas-adicionar botao">
-                    <p>Adicionar</p>
-                </div>
-            </div>
-            <div >
-                <!-- DIV para cada tarefa individual-->
-                <div class="tarefa">
-                    <h1>Título tarefa</h1>
-                    <div class="tarefa__descricao">
-                        <div>
-                            <p>Descrição</p>
-                        </div>
-                        <div>
-                            <div>
-                                <p>dd/mm/aaaa</p>
-                            </div>
-                            <div>
-                                <p>hh:mm</p>
-                            </div>
-                            <div>
-                                <p>Categoria</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="tarefa__deletar botao">
-                            <p>Deletar</p>
-                        </div>
-                        <div class="tarefa__editar botao">
-                            <p>Editar</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+      </div>
+    </div>    
+  </main>
+
+  <!-- Importações -->
+  <script src="assets/js/models/Categorias.js"></script>
+  <script src="assets/js/models/Tarefas.js"></script>
+  
+  <script src="assets/js/services/Service.js"></script>
+  <script src="assets/js/services/CategoriaService.js"></script>
+  <script src="assets/js/services/TarefaService.js"></script>
+  
+  <script src="assets/js/views/CategoriaView.js"></script>
+  <script src="assets/js/views/TarefaView.js"></script>
+  
+  <script src="assets/js/controllers/CategoriaController.js"></script>
+  <script src="assets/js/controllers/TarefaController.js"></script>
+  
+  <script src="assets/js/app.js"></script>
+
+  <!-- Importações do Bootstrap -->
+  <script src="assets/js/bootstrap/jquery-3.3.1.slim.min.js"></script>
+  <script src="assets/js/bootstrap/popper.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
 </body>
 </html>

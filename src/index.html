@@ -11,53 +11,40 @@
   <!-- Importações do Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-  <style>
-    .task-background{
-      background-color: #F4F4F4;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .font-text{
-      font-size: 12px;
-    }
-    .link-category{
-      font-size: 14px;
-      color: #4F4F4F;
-    }
-    .link-category:hover{
-      text-decoration: none;
-    }
-    .link-task{
-      font-size: 16px;
-      color: #4F4F4F;
-    }
-    .link-task:hover{
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><!--glyphicon-->
 </head>
 <body>
-  
-  <header class="container-fluid" style="background-color: #2F80ED">
-    <div class="d-flex justify-content-between pt-2 pb-2">
-      
-      <div class="text-white align-self-center" style="font-size: 24px">
-        Tarefa
-      </div>
-      
+  <header class="container-fluid " style="background-color: #2F80ED">
+    <div class="d-flex justify-content-between pt-2 pb-2 container-fluid">
+      <!--parte 1 do menu-->
       <div class="align-self-center">
         <form class="form-inline">
-          <div class="form-group">
-            <input type="text" class="form-control mr-2" placeholder="Buscar" style="background-color: #4E90E9; color: #FFF">
+          <div class="text-white align-self-center mr-3" style="font-size: 24px">
+            Tarefa
           </div>
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control mr-2" placeholder="Buscar" style="background-color: #4E90E9; color: #FFF;" >
+              <span class="glyphicon glyphicon-search form-control-feedback" style="color: white"></span>
+          </div>
+        </div>
+      </form>
+      <!--parte 2 do menu-->
+      <div class="align-self-center">
+        <form class="form-inline">
+            
           <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
             <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
+            <a href=""><img src="assets/images/notification-white.svg" alt="Notificação" class="notification"></a>
         </form>
       </div>
 
     </div>
   </header>
+
+
+
+
 
   <main class="container-fluid d-flex">
     <nav>

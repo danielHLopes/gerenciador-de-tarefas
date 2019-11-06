@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><!--glyphicon-->
 </head>
+
+
+
 <body>
   <header class="container-fluid " style="background-color: #2F80ED">
     <div class="d-flex justify-content-between pt-2 pb-2 container-fluid">
@@ -33,7 +36,11 @@
       <div class="align-self-center">
         <form class="form-inline">
             
-          <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
+          <button class="btn btn-success mr-3" id="btn-novo" 
+          data-toggle="modal" data-target="#modal" 
+          onclick="tarefaController.carregarFormulario(this)"
+          >
+          
             <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
             <a href=""><img src="assets/images/notification-white.svg" alt="Notificação" class="notification"></a>
         </form>
@@ -42,7 +49,7 @@
     </div>
   </header>
 
-
+<!--MAIN-->
 
 
   <main class="container-fluid d-flex">
@@ -50,7 +57,7 @@
       <div class="mt-3 d-flex justify-content-between">
         <span>Categorias:</span>
         <span>
-          <a href="" data-toggle="modal" data-target="#modal"><img src="assets/images/add-black.svg" alt="Nova categoria"></a>
+          <a href="" ><img src="assets/images/add-black.svg" alt="Nova categoria"></a>
         </span>
       </div>
       <ul class="list-unstyled mt-3" id="lista-categorias">
@@ -77,11 +84,11 @@
             <form class="form">
               <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" class="form-control" value="Fazer algo">
+                <input type="text" id="descricao" class="form-control" placeholder="Fazer algo">
               </div>
               <div class="form-group">
                 <label for="data">Data:</label>
-                <input type="date" id="data" class="form-control" value="2019-10-10">
+                <input type="date" id="data" class="form-control" placeholder="2019-10-10">
               </div>
               <div class="form-group">
                 <label for="categoria">Categoria:</label>

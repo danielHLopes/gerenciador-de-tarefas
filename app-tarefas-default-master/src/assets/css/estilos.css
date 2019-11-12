@@ -29,7 +29,16 @@
   margin-top: 500px;
 }
 
+.lista__itens{
+  list-style: none;
+}
 
+.separar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+ 
+}
 
 #more {display: none;}
 

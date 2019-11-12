@@ -1,9 +1,27 @@
 class CategoriaView{
 
   constructor(){
+    // this._grid = document.querySelector('#grid')
+
+    // Adicionando um listernet no botão que carrega o formulário
+    this._btnCategoria = document.querySelector('#btn-categoria')
+    this._btnCategoria.addEventListener('click', (event) => {
+      event.preventDefault()
+    })
+
+    // Campos do Formulário
+    this._campoDescricaoCategoria = document.querySelector('#descricao')
+    this._campoCor = document.querySelector('#cor') 
     this._listagem = document.querySelector('#lista-categorias')
   }
+  get campoDescricaoCategoria(){
+    return this._campoDescricaoCategoria.value
+  }
 
+  get campoCor(){
+    return this._campoCor.value
+  }
+  
   templateListagem(categorias){
     return `
       ${categorias.listar().map(categoria => {

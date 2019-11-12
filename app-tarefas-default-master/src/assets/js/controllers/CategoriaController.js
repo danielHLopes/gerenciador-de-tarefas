@@ -16,4 +16,21 @@ class CategoriaController {
       // Chama a view
       .then(() => this._categoriaView.montarListagem(this._categorias))
   }
+
+  carregarFormularioCategoria(){
+    
+    // Mostra o formulário
+    $('#modalCategoria').modal('show')
+  }
+
+  inserirCategoria(){
+    
+    const categoria = new Categoria(this._categoriaView.campoDescricaoCategoria, this._categoriaView._campoCor)
+
+
+    
+    // Enviar a categoria
+    this._categoriaService.inserirCategoria(categoria.toJSON())
+      .then(res => console.log(res))
+  }
 }

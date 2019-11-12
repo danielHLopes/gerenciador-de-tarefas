@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
- <!--ler mais-->
+  <!--ler mais-->
 
 
 <body>
@@ -35,23 +35,33 @@
         </form>
       </div>
 
-      <div class="align-self-center">
+      <div class="align-self-center d-flex">
         <form class="form-inline">
 
           <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
             <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
         </form>
+        <!--Imagens da notificação-->
+        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
+          <img src="assets/images/sino.svg" alt="Sino das notificações">
+        </a>
+        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
+          <img src="assets/images/sino-com-item.svg" alt="Sino das notificações com item">
+        </a>
       </div>
-    </div>
+      
+     </div>
   </header>
 
   <main class="container-fluid d-flex">
     <nav>
       <div class="mt-3 font-weight-bold d-flex justify-content-between">
         <span>Categorias:</span>
-        <span>
-          <a href="#"><img src="assets/images/add-black.svg" alt="Nova categoria"></a>
-        </span>
+        <form class="form-inline">
+          <button class="btn" id="btn-categoria" onclick="categoriaController.carregarFormularioCategoria(this)">
+            <img src="assets/images/add-black.svg" alt="Nova categoria">
+          </button>
+        </form>
       </div>
       <ul class="list-unstyled mt-3" id="lista-categorias">
         <li>
@@ -74,34 +84,69 @@
             <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
           </a>
         </li>
-        <li >
-            <div class="panel-group">
-                <div class="">
-                  <div class="">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapse1">Mais...</a>
-                      <span data-toggle="collapse" href="#collapse1"
-                      class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span>
-                    </h4>
-                  </div>
-                  <div id="collapse1" class="panel-collapse collapse">
-                    <ul class="list-group"><!--aqui em baixo recebera da api as outras categorias-->
-                      <li ><a href="#" class="link-category">
-                          <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
-                        </a></li>
-                      <li ><a href="#" class="link-category">
-                          <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
-                        </a></li>
-                      <li ><a href="#" class="link-category">
-                          <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
-                        </a></li>
-                    </ul>
-      
-                  </div>
-                </div>
+        <li>
+          <div class="panel-group">
+            <div class="">
+              
+              <div id="collapse1" class="panel-collapse collapse">
+                <ul class="list-group">
+                  <!--aqui em baixo recebera da api as outras categorias-->
+                  <li><a href="#" class="link-category">
+                      <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
+                    </a></li>
+                  <li><a href="#" class="link-category">
+                      <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
+                    </a></li>
+                  <li><a href="#" class="link-category">
+                      <img src="assets/images/red.svg" alt="" class="mr-1"> Pessoal
+                    </a></li>
+                </ul>
+
               </div>
+              <div class="">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapse1">Mais...</a>
+                  <span data-toggle="collapse" href="#collapse1" class="pull-right clickable"><i
+                      class="glyphicon glyphicon-chevron-down"></i></span>
+                </h4>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
+
+      <!--Modal de categorias-->
+      <div class="modal" id="modalCategoria">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title font-weight-bold ">Inserir nova categoria</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form">
+                <div class="form-group">
+                  <label for="descricao">Descrição:</label>
+                  <input type="text" id="descricao" class="form-control" value="Estudar">
+                </div>
+                <div class="form-group">
+                  <label for="cor">Cor:</label>
+                  <input type="color" id="colorselector"> 
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" id="btn-salvar"
+                onclick="">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
 
 
@@ -121,7 +166,11 @@
           </li>
         </ul>
       </div>
+          <div class=" lixeira flex-column">
+            <button type="button" class="btn btn-outline-danger" id="btn-lixeira"> <img src="assets/images/lixeira.svg" alt="Lixeira">   Lixeira</button>
+          </div>
     </nav>
+    
 
 
 
@@ -233,12 +282,12 @@
       </section>
 
     </section>
-
+     <!--Modal de tarefas -->
     <div class="modal" id="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Inserir nova tarefa</h5>
+            <h4 class="modal-title font-weight-bold">Inserir nova tarefa</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -274,6 +323,9 @@
     </div>
   </main>
 
+
+
+
   <!-- Importações -->
   <script src="assets/js/util/Mensagens.js"></script>
   <script src="assets/js/models/Tarefa.js"></script>
@@ -293,6 +345,7 @@
   <script src="assets/js/bootstrap/jquery-3.3.1.slim.min.js"></script>
   <script src="assets/js/bootstrap/popper.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+  <script src="bootstrap-colorselector.js"></script>
 </body>
 
 </html>

@@ -19,42 +19,42 @@
 
 
 <body>
-
   <header class="container-fluid" style="background-color: #2F80ED">
     <div class="d-flex justify-content-between pt-2 pb-2">
       <div class="align-self-center">
         <form class="form-inline">
-          <div class="text-white align-self-center mr-3" style="font-size: 24px">
+          <div >
+            <img class="btn__menu-mobile" src="assets/images/menu.svg" alt="menu">
+          </div>
+          <div class="text-white align-self-center mr-3 text-mobile" style="font-size: 24px">
             Tarefa
           </div>
-          <div class="form-group has-feedback">
+          <div class="form-group has-feedback pesquisa-mobile">
             <input type="text" class="form-control mr-2" placeholder="Buscar"
               style="background-color: #4E90E9; color: #FFF;">
-            <span class="glyphicon glyphicon-search form-control-feedback" style="color: white"></span>
+            <span class="glyphicon glyphicon-search form-control-feedback icon__pesquisa-mobile" style="color: white"></span>
           </div>
         </form>
       </div>
 
       <div class="align-self-center d-flex">
-        <form class="form-inline">
-
+        <form class="btn-mobile">
           <button class="btn btn-success mr-3" id="btn-novo" onclick="tarefaController.carregarFormulario(this)">
-            <img src="assets/images/add-white.svg" alt="Nova tarefa"> Nova</button>
+            <img src="assets/images/add-white.svg" alt="Nova tarefa"> Novo</button>
         </form>
         <!--Imagens da notificação-->
-        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino.svg" alt="Sino das notificações">
+        <a href="#" class="d-flex justify-content-between pt-2 pb-2">
+          <img class="btn__notfication-mobile" src="assets/images/sino.svg" alt="Sino das notificações">
         </a>
-        <a href="#" class="d-flex justify-content-between  pt-2 pb-2">
-          <img src="assets/images/sino-com-item.svg" alt="Sino das notificações com item">
+        <a href="#" class="d-flex justify-content-between pt-2 pb-2">
+          <img  class=" btn__filtro-mobile" src="assets/images/filtro.svg" alt="Sino das notificações com item">
         </a>
       </div>
-      
      </div>
   </header>
 
   <main class="container-fluid d-flex">
-    <nav class="separar">
+    <nav class="separar nav__none">
       <div>
       <div class="mt-3 font-weight-bold d-flex justify-content-between">
         <span>Categorias:</span>
@@ -178,7 +178,11 @@
 
       <!-- Mensagem -->
       <div class="d-none" id="mensagem"></div>
-
+      <!-- botão novo e categoria (mobile)-->
+      <div class="text-center">
+        <button type="button" class="botao__novo-mobile btn-outline-primary">+ Novo</button>
+        <button type="button" class="botao__categoria-mobile btn-outline-primary">+ Categorias</button>
+      </div>
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
         <div>

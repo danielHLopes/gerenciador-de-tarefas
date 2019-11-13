@@ -93,4 +93,10 @@
   .btn__filtro-mobile{
     display: none;
   }
+  .botao__novo-mobile{
+    display: none;
+  }
+  .botao__categoria-mobile{
+    display: none;
+  }
 }

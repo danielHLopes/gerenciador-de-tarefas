@@ -84,7 +84,18 @@
     width: 120px;
     margin: 20px 10px 10px 10px;
   }
-
+  .checkbox-mobile{
+    display: none;
+  }
+  .lixeira-mobile{
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-left: -30px;
+    padding: 20px;
+  }
+  .text__menu-mobile{
+    padding: 10px;
+  }
 }
 @media(min-width: 650px){
   .btn__menu-mobile{

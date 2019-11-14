@@ -9,6 +9,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/menu.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto&display=swap" rel="stylesheet">
   <!-- Importações do Bootstrap -->
   <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -19,12 +21,27 @@
 
 
 <body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="text__menu-mobile" href="#"><img src="assets/images/lixeiramobile.svg" class="lixeira-mobile" alt="Lixeira">Lixeira</a>
+    
+  </div>
+
+  <div id="sidenavright" class="sidenavright">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNavright()">&times;</a>
+      <a href="#">Escola</a>
+      <a href="#">Trabalho de Conclusão</a>
+      <a href="#">Trabalho</a>
+      <a href="#">Pessoal</a>
+  </div>
+
+
   <header class="container-fluid" style="background-color: #2F80ED">
     <div class="d-flex justify-content-between pt-2 pb-2">
       <div class="align-self-center">
         <form class="form-inline">
           <div >
-            <img class="btn__menu-mobile" src="assets/images/menu.svg" alt="menu">
+            <img class="btn__menu-mobile" src="assets/images/menu.svg" alt="menu" onclick="openNav()">
           </div>
           <div class="text-white align-self-center mr-3 text-mobile" style="font-size: 24px">
             Tarefa
@@ -47,13 +64,13 @@
           <img class="btn__notfication-mobile" src="assets/images/sino.svg" alt="Sino das notificações">
         </a>
         <a href="#" class="d-flex justify-content-between pt-2 pb-2">
-          <img  class=" btn__filtro-mobile" src="assets/images/filtro.svg" alt="Sino das notificações com item">
+          <img  class=" btn__filtro-mobile" src="assets/images/filtro.svg" alt="Filtro de categorias" onclick="openNavright()">
         </a>
       </div>
      </div>
   </header>
-
   <main class="container-fluid d-flex">
+    
     <nav class="separar nav__none">
       <div>
       <div class="mt-3 font-weight-bold d-flex justify-content-between">
@@ -170,10 +187,6 @@
         </div>
       </div>
     </nav>
-    
-
-
-
     <section class="flex-fill" id="grid">
 
       <!-- Mensagem -->
@@ -185,7 +198,7 @@
       </div>
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
-        <div>
+        <div class="checkbox-mobile">
           <input type="checkbox" class="mt-1">
         </div>
         <div class="flex-fill ml-2 mr-2">
@@ -206,7 +219,7 @@
 
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
-        <div>
+        <div class="checkbox-mobile">
           <input type="checkbox" class="mt-1">
         </div>
         <div class="flex-fill ml-2 mr-2">
@@ -226,7 +239,7 @@
 
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
-        <div>
+        <div class="checkbox-mobile">
           <input type="checkbox" class="mt-1">
         </div>
         <div class="flex-fill ml-2 mr-2">
@@ -247,7 +260,7 @@
 
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
-        <div>
+        <div class="checkbox-mobile">
           <input type="checkbox" class="mt-1">
         </div>
         <div class="flex-fill ml-2 mr-2">
@@ -267,7 +280,7 @@
 
       <!-- Tarefa -->
       <section class="task-background d-flex m-3">
-        <div>
+        <div class="checkbox-mobile">
           <input type="checkbox" class="mt-1">
         </div>
         <div class="flex-fill ml-2 mr-2">
@@ -284,8 +297,8 @@
           </div>
         </div>
       </section>
-
     </section>
+
      <!--Modal de tarefas -->
     <div class="modal" id="modal">
       <div class="modal-dialog">
@@ -358,6 +371,24 @@
   <script src="assets/js/bootstrap/popper.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
   <script src="bootstrap-colorselector.js"></script>
+  
+  <!--MENU-->
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      closeNavright();
+    }
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    function openNavright() {
+      document.getElementById("sidenavright").style.width = "250px";
+      closeNav();
+    }
+    function closeNavright() {
+      document.getElementById("sidenavright").style.width = "0px";
+    }
+    </script>
 </body>
 
 </html>

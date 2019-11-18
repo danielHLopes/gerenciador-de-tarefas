@@ -34,7 +34,18 @@ class TarefaService extends Service {
   }
 
   alterar(tarefa){
-
+    const parametros = {
+      method: 'PUT',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(tarefa)
+    }
+    // console.log(tarefa)
+    return fetch(`${this._path}`, parametros)
+            .then(res => {
+              if (!res.ok) throw new Error(res.statusText)
+              return res.json()
+            })
+            .catch(erro => Mensagem.mostrar(erro, 'alert-danger'))
   }
 
   deletar(tarefa){

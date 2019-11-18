@@ -6,6 +6,7 @@ class TarefaView {
 
     // Adicionando um listernet no botão que carrega o formulário
     this._btnNovo = document.querySelector('#btn-novo')
+    
     this._btnNovo.addEventListener('click', (event) => {
       event.preventDefault()
     })
@@ -44,8 +45,13 @@ class TarefaView {
                 <img src="assets/images/blue.svg" alt="" class="mr-1">${tarefa.categoria} 
               </div>
             </div>
+            <div class="flex-column">
             <div>
               <a href="#"><img src="assets/images/delete.svg" alt=""></a>
+            </div>
+            <div class="mt-3">
+              <a onclick="tarefaController.trocarModalEditar(this),tarefaController.carregarFormulario(this),tarefaController.editar('${tarefa.descricao}','${tarefa.data}','${tarefa.categoria}','${tarefa.prioridade}'),tarefaController.listar(this)"  href="#"><img src="assets/images/editar.svg" alt=""></a>
+            </div>
             </div>
           </section>
         `
